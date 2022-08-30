@@ -1,10 +1,10 @@
 # PuzzleDrop.Web
 WebAssembly Game Demo
 
-Controls
-    * Left, Right Arrow keys: Move the blocks 
-    * Up Arrow key: Shift the colors of the blocks
-    * Spacebar: Rotate the blocks
+Controls:
+    Use the Left, Right Arrow keys to Move the blocks 
+    the Up Arrow key to Shift the colors of the blocks
+    press the Spacebar to rotate the blocks.
 
 How to play:
 
