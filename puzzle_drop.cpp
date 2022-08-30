@@ -216,6 +216,11 @@ namespace puzzle {
         game_level = 1;
         lines = 0;
         game_over = false;
+        clearPiece();
+    }
+
+    void Grid::clearPiece() {
+        piece.newPiece(grid_w/2, 0);
     }
     
     Grid::~Grid() {
@@ -634,6 +639,7 @@ EMSCRIPTEN_BINDINGS(my_class_Example) {
     .function("block_getx", &Grid::block_getx)
     .function("block_gety", &Grid::block_gety)
     .function("init_rand", &Grid::init_rand)
+    .function("clearPiece", &Grid::clearPiece)
   //  .property("x"incrementX, &MyClass::getX, &MyClass::setX)
     
     ;

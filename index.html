@@ -4,18 +4,45 @@
 <title>Puzzle Drop</title>
 <style type="text/css">
 .div1 {
-    align-content: center;
+    text-align: center;
 }
+
+input {
+    font-size: 32px;
+}
+
+.con1 {
+    text-align: center;
+}
+
+.con2 {
+    text-align: center;
+}
+
 </style>
+
 </head>
 <body>
 
     <div class="div1">
     <canvas id="can1" width="1280" height="720">
-
     </canvas>
     </div>
+    <div id="Game" class="con1">
+        <input type="button" value="Left" id="left" onclick="grid.keyLeft()"/> - <input type="button" value="Right" id="right" onclick="grid.keyRight()" /> - 
+        <input type="button" value="Down" id="down" onclick="grid.keyDown()" /> - <input type="button" value="Shift" id="shift" onclick="grid.keyShiftUp()" /> - <input type="button" value="Rotate" id="rotate" onclick="grid.keyRotateLeft()" /> 
+    </div>
+    <div id="GameOver" class="con2">
+        <br>
+        <input type="button" value="Start Over" id="start_over" onclick="newGame()" />
+    </div>
 </body>
+
+<script>
+
+    
+    </script>
+
 <script src="puzzle.js"></script>
 <script src="puzzle_drop.js"></script>
 </html>

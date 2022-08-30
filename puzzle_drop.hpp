@@ -86,6 +86,7 @@ namespace puzzle {
         bool procBlocks();
         bool gameOver() const;
         void init_rand(int n);
+        void clearPiece();
     protected:
         Block **blocks;
         Piece piece;

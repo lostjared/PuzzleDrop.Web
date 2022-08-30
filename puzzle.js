@@ -86,6 +86,10 @@ function keyPressed(key) {
     }
 }
 
+function newGame() {
+    grid.clearGrid();
+}
+
 function drawBlock(num) {
 
     var block_t = grid.block_pos(num);
