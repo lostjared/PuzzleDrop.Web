@@ -38,7 +38,7 @@ function loadGraphics() {
 		images[i+2].src = "img/" + graphics[i];	
 	}
 
-    for(var i = 0; i <= 6; ++i) {
+    for(i = 0; i <= 6; ++i) {
         level[i] = new Image();
         level[i].onload = function() {}
         level[i].src = "img/" + level_gfx[i] + ".png";
@@ -55,7 +55,7 @@ function main(puzzle) {
 
 function keyPressed(key) {
 
-    if(grid.gameOver() == false) {
+    if(grid.gameOver() === false) {
         switch(key.keyCode) {
 		    case 37:
 		        grid.keyLeft();
@@ -79,7 +79,7 @@ function keyPressed(key) {
 		    break;
 	    }
     } else {
-        if(key.keyCode == 13) {
+        if(key.keyCode === 13) {
             grid.clearGrid();
             key.preventDefault();
         }
@@ -92,7 +92,7 @@ function drawBlock(num) {
     var block_x = grid.block_getx(num);
     var block_y = grid.block_gety(num);
 
-    if(block_t == BLOCK_MATCH) {
+    if(block_t === BLOCK_MATCH) {
         var r = Math.floor(Math.random()*8);
         context.drawImage(images[2+r], block_x*64, block_y*32);
     } else { 
@@ -113,13 +113,13 @@ function drawScreen() {
     logic();
 
     ++counter;
-    if(grid.gameOver() == false && counter > 25) {
+    if(grid.gameOver() === false && counter > 25) {
         counter = 0;
         grid.keyDown();
     }
     context.drawImage(level[grid.level()-1], 0, 0, 1280, 720);
     context.font="12px Verdana";
-    if(grid.gameOver() == false) {
+    if(grid.gameOver() === false) {
         for(var x = 0; x < GRID_WIDTH; ++x) {
             for(var y = 0; y < GRID_HEIGHT; ++y) {
                 var pos = grid.grid_int(x, y);
