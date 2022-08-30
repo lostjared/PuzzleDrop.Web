@@ -11,5 +11,5 @@ How to play:
 Move the blocks around and line up in a row the pattern 3,2,1 or 1,2,3 of the same color either horizontal, vertical, or diagonal.
 A flashing block will match any number or color in the pattern 1,2,3 or 3,2,1
 Keep clearing blocks and move through the levels
-Try to read level 7.
+Try to reach level 7.
 
