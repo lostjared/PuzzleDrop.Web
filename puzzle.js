@@ -75,7 +75,8 @@ var is_down = false;
 var is_moved = false;
 
 function doubleClick() {
-    grid.keyRotateLeft();
+
+    
 }
 
 function mouseMove(e) {

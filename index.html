@@ -33,6 +33,11 @@ input {
     <canvas class="can1" id="can1" width="1280" height="720">
     </canvas>
     </div>
+
+    <div id="Game" class="con1">
+        <input type="button" value="Shift" onclick="grid.keyShiftUp()" /> - <input type="button" value="Rotate" onclick="grid.keyRotateLeft()" />
+    </div>
+
     <div id="GameOver" class="con2">
         <br><br><br>
         <input type="button" value="Start Over" id="start_over" onclick="newGame()" />
