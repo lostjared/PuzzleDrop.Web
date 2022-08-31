@@ -52,12 +52,10 @@ function main(puzzle) {
 
     var istouch = 'ontouchstart' in window;
 
-    if(istouch) {
-        /*
+    if(istouch) {    
 	    window.addEventListener("touchstart",mouseDown,true);
     	window.addEventListener("touchend",mouseUp,true);
         window.addEventListener("touchmove", mouseMove, true);
-        */
     }
     else {
 	    window.addEventListener("mouseup", mouseUp, true);
@@ -129,6 +127,7 @@ function mouseDown(e) {
 		downX = e.pageX;
         downY = e.pageY;
         is_down = true;
+        e.preventDefault();
 }
 
 function mouseUp(e) {
@@ -160,6 +159,7 @@ function mouseUp(e) {
     if(is_moved === true) {
         is_moved = false;
     }
+    e.preventDefault();
 } 
 function keyPressed(key) {
 
