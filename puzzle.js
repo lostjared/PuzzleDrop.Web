@@ -49,12 +49,10 @@ function main(puzzle) {
     loadGraphics();
     grid.clearGrid();
     window.addEventListener("keydown", keyPressed, true);
-
     var istouch = 'ontouchstart' in window;
-
     if(istouch) {    
-	    window.addEventListener("touchstart",mouseDown,true);
-    	window.addEventListener("touchend",mouseUp,true);
+	    window.addEventListener("touchstart",mouseDown, true);
+    	window.addEventListener("touchend",mouseUp, true);
         window.addEventListener("touchmove", mouseMove, true);
     }
     else {
@@ -63,8 +61,6 @@ function main(puzzle) {
         window.addEventListener("mousemove", mouseMoveB, true); 
         window.addEventListener("dblclick", doubleClick, true);
     }
-
-    
 
     setInterval(drawScreen, 25);
     drawScreen();
@@ -84,7 +80,6 @@ function doubleClick() {
 
 function mouseMove(e) {
 	var sourceElement = e.target || e.srcElement;	
-	e.preventDefault();
 	upX = e.touches[0].pageX;
 	upY = e.touches[0].pageY;
     if(is_down === true) {
@@ -102,6 +97,7 @@ function mouseMove(e) {
         }
 
     }
+    e.stopPropagation();
     e.preventDefault();
 }
 
@@ -124,10 +120,16 @@ function mouseMoveB(e) {
 }
 
 function mouseDown(e) {
-		downX = e.pageX;
+
+    if(e.type === "touchstart")  {
+            downX = e.touches[0].pageX;
+            downY = e.touches[0].pageY;
+    } else {
+        downX = e.pageX;
         downY = e.pageY;
-        is_down = true;
-        e.preventDefault();
+    }
+    is_down = true;
+    e.preventDefault();
 }
 
 function mouseUp(e) {
