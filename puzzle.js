@@ -125,12 +125,16 @@ function mouseDown(e) {
     if(e.type === "touchstart")  {
             downX = e.touches[0].pageX;
             downY = e.touches[0].pageY;
+
+            if(e.touches.length > 1) {
+                grid.keyRotateLeft();
+            }
+
     } else {
         downX = e.pageX;
         downY = e.pageY;
     }
     is_down = true;
-    e.preventDefault();
 }
 
 function mouseUp(e) {
