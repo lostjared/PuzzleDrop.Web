@@ -59,7 +59,6 @@ function main(puzzle) {
 	    window.addEventListener("mouseup", mouseUp, true);
 	    window.addEventListener("mousedown", mouseDown, true);
         window.addEventListener("mousemove", mouseMoveB, true); 
-        window.addEventListener("dblclick", doubleClick, true);
     }
 
     setInterval(drawScreen, 25);
@@ -73,11 +72,6 @@ var old_down_X = 0;
 var old_pos = 0;
 var is_down = false;
 var is_moved = false;
-
-function doubleClick() {
-
-    
-}
 
 function mouseMove(e) {
 	var sourceElement = e.target || e.srcElement;	
