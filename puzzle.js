@@ -7,11 +7,11 @@ const BLOCK_CLEAR = 1;
 const BLOCK_MATCH = 11;
 
 var Module = {
-onRuntimeInitialized: function() {
-    grid = new Module.PuzzleGrid(GRID_WIDTH, GRID_HEIGHT);
-    grid.init_rand(Math.floor(Math.random()*1000));
-    main(grid);
-}
+    onRuntimeInitialized: function() {
+        grid = new Module.PuzzleGrid(GRID_WIDTH, GRID_HEIGHT);
+        grid.init_rand(Math.floor(Math.random()*1000));
+        main(grid);
+    }
 };
 
 var can = document.getElementById("can1");
@@ -20,8 +20,8 @@ var images = [];
 var level = []
 
 function loadGraphics() {
-    var graphics = ['red1.png', 'red2.png', 'red3.png', 'green1.png', 'green2.png', 'green3.png', 'blue1.png', 'blue2.png', 'blue3.png'];
-    var level_gfx = ['level1', 'level2', 'level3', 'level4', 'level5', 'level6', 'level7' ];
+    const graphics = ['red1.png', 'red2.png', 'red3.png', 'green1.png', 'green2.png', 'green3.png', 'blue1.png', 'blue2.png', 'blue3.png'];
+    const level_gfx = ['level1', 'level2', 'level3', 'level4', 'level5', 'level6', 'level7' ];
     
     for(var i = 0; i < graphics.length; ++i) {
         images[i+2] = new Image();
@@ -210,7 +210,7 @@ function logic() {
 }
 
 var counter = 0;
-var clear_colors = ['#FF0000', '#00FF00', '#0000FF' ];
+const clear_colors = ['#FF0000', '#00FF00', '#0000FF' ];
 
 function drawScreen() {
     
