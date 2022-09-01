@@ -1,19 +1,10 @@
 
 var grid;
-var GRID_WIDTH=1280/64;
-var GRID_HEIGHT=720/32;
-var BLOCK_NULL = 0;
-var BLOCK_CLEAR = 1;
-var BLOCK_RED1 = 2;
-var BLOCK_RED2 = 3;
-var BLOCK_RED3 = 4;
-var BLOCK_GREEN1 = 5;
-var BLOCK_GREEN2 = 6;
-var BLOCK_GREEN3 = 7;
-var BLOCK_BLUE1 = 8;
-var BLOCK_BLUE2 = 9;
-var BLOCK_BLUE3 = 10;
-var BLOCK_MATCH = 11;
+const GRID_WIDTH=1280/64;
+const GRID_HEIGHT=720/32;
+const BLOCK_NULL = 0;
+const  BLOCK_CLEAR = 1;
+const BLOCK_MATCH = 11;
 
 var Module = {
       onRuntimeInitialized: function() {
