@@ -1,15 +1,12 @@
 # PuzzleDrop.Web
-WebAssembly Game Demo
+
+WebAssembly Game Demo Instructions:
 
 Controls:
-    Use the Left, Right Arrow keys to Move the blocks 
-    the Up Arrow key to Shift the colors of the blocks
-    press the Spacebar to rotate the blocks.
+* Move Blocks: Navigate the blocks horizontally using the Left and Right Arrow keys.
+* Shift Colors: Change the colors of the blocks by pressing the Up Arrow key.
+* Rotate Blocks: Adjust the orientation of the blocks with the Spacebar.
 
-How to play:
+Gameplay:
 
-Move the blocks around and line up in a row the pattern 3,2,1 or 1,2,3 of the same color either horizontal, vertical, or diagonal.
-A flashing block will match any number or color in the pattern 1,2,3 or 3,2,1
-Keep clearing blocks and move through the levels
-Try to reach level 7.
-
+Your task is to rearrange the blocks so that they form a sequence of 3-2-1 or 1-2-3 in the same color, aligning them either horizontally, vertically, or diagonally. Pay attention to the flashing block; it's a wildcard that can substitute for any number or color in your sequence. Your objective is to keep clearing blocks to progress through the levels, aiming to reach level 7.
