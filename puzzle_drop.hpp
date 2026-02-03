@@ -75,6 +75,7 @@ namespace puzzle {
         void keyLeft();
         void keyRight();
         void keyDown();
+        void keyDrop();
         void keyShiftUp();
         void keyShiftDown();
         void keyRotateLeft();

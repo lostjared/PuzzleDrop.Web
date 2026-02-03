@@ -166,7 +166,7 @@ function keyPressed(key) {
                 key.preventDefault();
                 break;
             case 32:
-                grid.keyRotateLeft();
+                grid.keyDrop();
                 key.preventDefault();
                 break;
             case 39:
@@ -175,6 +175,10 @@ function keyPressed(key) {
                 break;
             case 40:
                 grid.keyDown();
+                key.preventDefault();
+                break;
+            case 90:
+                grid.keyRotateLeft();
                 key.preventDefault();
                 break;
         }
@@ -198,9 +202,9 @@ function drawBlock(num) {
     
     if(block_t === BLOCK_MATCH) {
         var r = Math.floor(Math.random()*8);
-        context.drawImage(images[2+r], block_x*64, block_y*32);
+        context.drawImage(images[2+r], block_x*64, block_y*32, 63, 31);
     } else {
-        context.drawImage(images[block_t], block_x*64, block_y*32);
+        context.drawImage(images[block_t], block_x*64, block_y*32, 63, 31);
     }
 }
 
@@ -232,18 +236,18 @@ function drawScreen() {
                         break;
                     case BLOCK_NULL:
                         context.fillStyle = "#000000";
-                        context.fillRect(x*64, y*32, 62, 30);
+                        context.fillRect(x*64, y*32, 63, 31);
                         break;
                     case BLOCK_CLEAR:
                         context.fillStyle = clear_colors[Math.floor(Math.random()*3)];
-                        context.fillRect(x*64, y*32, 62, 30);
+                        context.fillRect(x*64, y*32, 63, 31);
                         break;
                     case BLOCK_MATCH:
                         var r = Math.floor(Math.random()*8);
-                        context.drawImage(images[2+r], x*64, y*32, 62, 30);
+                        context.drawImage(images[2+r], x*64, y*32, 63, 31);
                         break;
                     default:
-                        context.drawImage(images[pos], x*64,y*32, 62, 30);
+                        context.drawImage(images[pos], x*64, y*32, 63, 31);
                         break;
                 }
                 

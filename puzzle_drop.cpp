@@ -279,6 +279,14 @@ namespace puzzle {
         }
     }
 
+    void Grid::keyDrop() {
+        while(checkPiece(piece, 0, 1)) {
+            piece.moveDown();
+        }
+        setPiece();
+        piece.newPiece(grid_w/2, 0);
+    }
+
     void Grid::keyRotateLeft() {
         Piece test_piece(piece);
         test_piece.rotateLeft();
@@ -624,6 +632,7 @@ EMSCRIPTEN_BINDINGS(my_class_Example) {
     .function("keyLeft", &Grid::keyLeft)
     .function("keyRight", &Grid::keyRight)
     .function("keyDown", &Grid::keyDown)
+    .function("keyDrop", &Grid::keyDrop)
     .function("keyShiftUp", &Grid::keyShiftUp)
     .function("keyShiftDown", &Grid::keyShiftDown)
     .function("keyRotateLeft", &Grid::keyRotateLeft)
