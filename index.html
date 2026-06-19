@@ -1,55 +1,305 @@
 <!doctype html>
-<html lang=""en">
+<html lang="en">
 <head>
-<title>PuzzleDrop WebAssembly Demo</title>
-<style type="text/css">
-
-.div1 {
-    text-align: center;
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PuzzleDrop -[  Mobile Editon ] </title>
+<style>
+:root {
+    color-scheme: dark;
+    --bg: #050814;
+    --bg2: #0b1220;
+    --panel: rgba(15, 23, 42, 0.86);
+    --panel-border: rgba(148, 163, 184, 0.28);
+    --text: #e5eefb;
+    --muted: #94a3b8;
+    --accent: #38bdf8;
+    --accent-strong: #0ea5e9;
+    --button: rgba(30, 41, 59, 0.95);
+    --button-border: rgba(148, 163, 184, 0.22);
+    --shadow: 0 18px 60px rgba(2, 6, 23, 0.45);
 }
 
-.can1 {
-    width: 70%;
-    height: auto;
-}
-
-input {
-    font-size: 24px;
-}
-
-.con1 {
-    text-align: center;
-}
-
-.con2 {
-    text-align: center;
+html, body {
+    margin: 0;
+    height: 100%;
+    background:
+        radial-gradient(circle at top, rgba(56, 189, 248, 0.16), transparent 36%),
+        radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.10), transparent 28%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+    color: var(--text);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 body {
-    background-color: #000000;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 a {
-    color: rgb(255,255,255);
+    color: inherit;
 }
 
-.span1 {
-    color: rgb(255,255,255);
-    font-size: 32px;
+#app {
+    min-height: 100dvh;
+    height: 100dvh;
+    box-sizing: border-box;
+    padding: clamp(10px, 2vw, 18px);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(10px, 1.5vw, 16px);
 }
 
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 14px;
+    border: 1px solid var(--panel-border);
+    border-radius: 18px;
+    background: rgba(15, 23, 42, 0.72);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
+}
 
+.brand {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.brand a {
+    text-decoration: none;
+    font-size: clamp(1.15rem, 3vw, 1.55rem);
+    font-weight: 800;
+    letter-spacing: 0.02em;
+}
+
+.subtitle {
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+.main {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    gap: clamp(10px, 1.8vw, 18px);
+}
+
+.gamePane {
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.boardFrame {
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    overflow: hidden;
+    background: rgba(2, 6, 23, 0.6);
+    box-shadow: var(--shadow);
+}
+
+canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+}
+
+.controlsPane {
+    flex: 0 0 min(34vw, 320px);
+    width: min(34vw, 320px);
+    min-width: 240px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.controlGroup {
+    padding: 14px;
+    border: 1px solid var(--panel-border);
+    border-radius: 18px;
+    background: var(--panel);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
+}
+
+.controlGroup h2 {
+    margin: 0 0 10px;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.buttonGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.controlButton {
+    appearance: none;
+    border: 1px solid var(--button-border);
+    border-radius: 16px;
+    background: linear-gradient(180deg, rgba(51, 65, 85, 0.98), var(--button));
+    color: var(--text);
+    min-height: 56px;
+    padding: 10px 12px;
+    font: inherit;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    touch-action: manipulation;
+}
+
+.controlButton:active {
+    transform: translateY(1px);
+    border-color: rgba(56, 189, 248, 0.42);
+    background: linear-gradient(180deg, rgba(14, 165, 233, 0.8), rgba(30, 41, 59, 0.98));
+}
+
+.controlButton.primary {
+    border-color: rgba(56, 189, 248, 0.45);
+    background: linear-gradient(180deg, rgba(14, 165, 233, 0.95), rgba(8, 47, 73, 0.96));
+}
+
+.footnote {
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.35;
+}
+
+@media (orientation: portrait) {
+    .main {
+        flex-direction: column;
+    }
+
+    .controlsPane {
+        width: 100%;
+        min-width: 0;
+        flex-basis: auto;
+    }
+}
+
+@media (orientation: landscape) {
+    #app {
+        padding: 0;
+        gap: 0;
+    }
+
+    .topbar {
+        display: none;
+    }
+
+    .controlsPane {
+        display: none;
+    }
+
+    .main {
+        flex-direction: row;
+        gap: 0;
+        width: 100vw;
+        height: 100dvh;
+    }
+
+    .gamePane {
+        align-items: stretch;
+        width: 100vw;
+        height: 100dvh;
+    }
+
+    .boardFrame {
+        width: 100vw;
+        height: 100dvh;
+        max-width: none;
+        border-radius: 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .controlsPane {
+        gap: 10px;
+    }
+
+    .controlGroup {
+        padding: 12px;
+    }
+
+    .controlButton {
+        min-height: 52px;
+        border-radius: 14px;
+    }
+}
 </style>
 </head>
 <body>
-    <div class="con2">
-        <span class="span1"><b><a href="https://github.com/lostjared/PuzzleDrop.Web">PuzzleDrop</a></b></span>
-    </div><br>
-    <div class="div1">
-    <canvas class="can1" id="can1" width="1280" height="720">
-    </canvas>
-    </div>
-</body>
+<div id="app">
+    <header class="topbar">
+        <div class="brand">
+            <a href="https://github.com/lostjared/PuzzleDrop.Web"><b>PuzzleDrop</b></a>
+        </div>
+        <div class="subtitle">Swipe, tap, or use buttons</div>
+    </header>
+
+    <main class="main">
+        <section class="gamePane" aria-label="Game board">
+            <div class="boardFrame" id="boardFrame">
+                <canvas id="can1" width="1280" height="720"></canvas>
+            </div>
+        </section>
+
+        <aside class="controlsPane" aria-label="Touch controls">
+            <section class="controlGroup">
+                <h2>Move</h2>
+                <div class="buttonGrid">
+                    <button class="controlButton" data-action="left">Left</button>
+                    <button class="controlButton" data-action="right">Right</button>
+                    <button class="controlButton" data-action="rotate-left">Rotate L</button>
+                    <button class="controlButton" data-action="rotate-right">Rotate R</button>
+                    <button class="controlButton" data-action="down">Down</button>
+                    <button class="controlButton primary" data-action="drop">Drop</button>
+                </div>
+            </section>
+
+            <section class="controlGroup">
+                <h2>Color Shift</h2>
+                <div class="buttonGrid">
+                    <button class="controlButton" data-action="shift-up">Shift Up</button>
+                    <button class="controlButton" data-action="shift-down">Shift Down</button>
+                    <button class="controlButton primary" data-action="restart">Restart</button>
+                </div>
+            </section>
+
+            <div class="footnote">
+                Portrait keeps the board locked to its original aspect ratio. Landscape expands the board and keeps controls reachable.
+            </div>
+        </aside>
+    </main>
+</div>
+
 <script src="puzzle.js"></script>
 <script src="puzzle_drop.js"></script>
+</body>
 </html>
